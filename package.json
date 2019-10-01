@@ -1,0 +1,36 @@
+{
+  "name": "playlist",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/main.js",
+  "types": "dist/main.d.ts",
+  "scripts": {
+    "build": "yarn run lint && yarn run clean && cross-env NODE_ENV=production rollup -c",
+    "compile": "tsc",
+    "dev": "yarn run clean && cross-env NODE_ENV=development rollup -c -w",
+    "lint": "tslint --project tsconfig.json --config tslint.json",
+    "clean": "del-cli dist"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@adobe/lit-mobx": "^0.0.2",
+    "lit-element": "^2.2.1",
+    "mobx": "^5.13.1"
+  },
+  "devDependencies": {
+    "cross-env": "^6.0.0",
+    "del-cli": "^3.0.0",
+    "rollup": "^1.22.0",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-livereload": "^1.0.3",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-serve": "^1.0.1",
+    "rollup-plugin-terser": "^5.1.2",
+    "rollup-plugin-typescript2": "^0.24.3",
+    "tslint": "^5.20.0",
+    "typescript": "^3.6.3",
+    "unique-temp-dir": "^1.0.0"
+  }
+}
