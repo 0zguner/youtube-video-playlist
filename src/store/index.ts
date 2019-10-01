@@ -104,6 +104,23 @@ export class PlayerStore {
   setCurrentSong(songId: number) {
     this.currentSongId = songId;
   }
+  @action
+  setNextSong() {
+    const currentPlaylistLenght = this.currentPlaylist.songs.length;
+    const currentSongIndex = this.currentPlaylist.songs.findIndex(
+      song => song.id === this.currentSongId
+    );
+    const playlistReachedEnd = currentSongIndex + 1 === currentPlaylistLenght;
+
+    const nextSongId = playlistReachedEnd
+      ? this.currentPlaylist.songs[0].id
+      : this.currentPlaylist.songs[currentSongIndex + 1].id;
+
+    if (currentSongIndex > -1) {
+      // set first songId when last song played
+      this.currentSongId = nextSongId;
+    }
+  }
 }
 
 export default new PlayerStore();

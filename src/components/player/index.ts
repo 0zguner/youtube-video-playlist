@@ -1,8 +1,10 @@
 import { html, customElement, css, property } from "lit-element";
 import { MobxLitElement } from "@adobe/lit-mobx";
+import PlayerStore from "../../store";
 
 @customElement("video-player")
 export class VideoPlayer extends MobxLitElement {
+  private store = PlayerStore;
   constructor() {
     super();
     this.initYouTubeApi();
@@ -60,8 +62,10 @@ export class VideoPlayer extends MobxLitElement {
     event.target.playVideo();
   }
   onPlayerStateChange(event: any) {
-    console.log(event);
-    return;
+    // @ts-ignore
+    if (event.data === window.YT.PlayerState.ENDED) {
+      this.store.setNextSong();
+    }
   }
 
   render() {
