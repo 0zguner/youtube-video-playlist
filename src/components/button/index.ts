@@ -8,14 +8,15 @@ export class CustomButton extends LitElement {
         background-color: #4caf50; /* Green */
         border: none;
         color: white;
-        padding: 15px 32px;
+        padding: 15px 10px;
         text-align: center;
         text-decoration: none;
         display: inline-block;
-        font-size: 16px;
+        font-size: 12px;
         cursor: pointer;
         opacity: 1;
         transition: all 0.3s ease 0s;
+        width: 110px;
       }
       button:hover {
         opacity: 0.75;

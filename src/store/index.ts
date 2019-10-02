@@ -8,7 +8,7 @@ export interface SongModel {
   video_id?: string;
 }
 
-interface PlaylistModel {
+export interface PlaylistModel {
   id: number;
   name: string;
   songs: SongModel[];
@@ -23,6 +23,7 @@ interface PlaylistModel {
 export class PlayerStore {
   @observable currentSongId = 1;
   @observable currentPlaylistId = 1;
+  @observable modalHidden = true;
   @observable playlists: PlaylistModel[] = [
     {
       id: 1,
