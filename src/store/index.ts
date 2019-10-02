@@ -1,4 +1,5 @@
 import { observable, action, computed } from "mobx";
+import { youtube_url_parser } from "../utils";
 
 export interface SongModel {
   id: number;
@@ -99,6 +100,7 @@ export class PlayerStore {
 
   @action
   addSongToCurrentPlaylist(song: SongModel) {
+    song.video_id = youtube_url_parser(song.url);
     if (this.currentPlaylist) this.currentPlaylist.songs.push(song);
   }
   @action
