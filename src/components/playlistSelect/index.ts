@@ -41,7 +41,7 @@ export class PlaylistSelect extends MobxLitElement {
 
   render() {
     return html`
-      <select>
+      <select @change="${this.handleChange}">
         ${this.store.playlists.map(
           playlist =>
             html`
@@ -51,5 +51,9 @@ export class PlaylistSelect extends MobxLitElement {
       </select>
       <slot></slot>
     `;
+  }
+
+  handleChange(event: any) {
+    this.store.currentPlaylistId = event.target.value;
   }
 }

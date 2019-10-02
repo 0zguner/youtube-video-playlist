@@ -19,8 +19,7 @@ export class VideoPlayer extends MobxLitElement {
         display: flex;
         flex: 2;
         flex-direction: column;
-        height: 100vh;
-        border: 1px solid gray;
+        height: 100%;
       }
     `;
   }

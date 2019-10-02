@@ -12,7 +12,6 @@ export class CreatePlaylist extends LitElement {
         display: flex;
         flex-direction: row;
         height: 50px;
-        border: 1px solid whitesmoke;
         background-color: black;
       }
       input {
@@ -32,7 +31,6 @@ export class CreatePlaylist extends LitElement {
   private save() {
     this.store.createPlaylist(this.inputValue);
     this.store.modalHidden = true;
-    console.log(this.store.playlists);
   }
 
   private onChange(event: any) {

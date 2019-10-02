@@ -8,11 +8,11 @@ export class PlaylistItem extends LitElement {
 
   static get styles() {
     return css`
-      display: flex;
-      flex-direction: row;
-      height: 100vh;
-      border: 1px solid gray;
-      cursor: pointer;
+      :host {
+        display: flex;
+        flex-direction: row;
+        cursor: pointer;
+      }
     `;
   }
 

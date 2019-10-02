@@ -14,10 +14,18 @@ export class Playlist extends MobxLitElement {
         display: flex;
         flex: 1;
         flex-direction: column;
-        height: 100vh;
-        border: 1px solid gray;
+        justify-content: space-between;
+        height: 100%;
+        border-right-color: whitesmoke;
+        border-right-style: solid;
+        border-right-width: 1px;
       }
-      div {
+      .playlist {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+      }
+      .controls {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -28,22 +36,25 @@ export class Playlist extends MobxLitElement {
 
   render() {
     return html`
-      <div>
+      <div class="playlist">
+        ${this.store.currentPlaylist &&
+          this.store.currentPlaylist.songs.map(
+            song =>
+              html`
+                <playlist-item
+                  @click="${() => this.store.setCurrentSong(song.id)}"
+                  .song=${song}
+                ></playlist-item>
+              `
+          )}
+      </div>
+      <div class="controls">
         <custom-button @click=${this.clickHandler}
           >Create Playlist</custom-button
         >
         <playlist-select></playlist-select>
         <custom-button @click=${this.clickHandler}>Add Song</custom-button>
       </div>
-      ${this.store.currentPlaylist.songs.map(
-        song =>
-          html`
-            <playlist-item
-              @click="${() => this.store.setCurrentSong(song.id)}"
-              .song=${song}
-            ></playlist-item>
-          `
-      )}
     `;
   }
   private clickHandler() {

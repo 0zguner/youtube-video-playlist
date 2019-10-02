@@ -18,8 +18,7 @@ export class HomeView extends MobxLitElement {
         display: flex;
         flex-direction: row;
         flex: 3;
-        height: 100vh;
-        border: 1px solid gray;
+        height: 100%;
       }
     `;
   }
@@ -27,7 +26,13 @@ export class HomeView extends MobxLitElement {
   render() {
     return html`
       <play-list></play-list>
-      <video-player videoId="${this.store.currentSong.video_id}"></video-player>
+
+      <video-player
+        videoId="${this.store.currentSong
+          ? this.store.currentSong.video_id
+          : ""}"
+      ></video-player>
+
       <modal-container ?hidden="${this.store.modalHidden}">
         <create-playlist />
       </modal-container>

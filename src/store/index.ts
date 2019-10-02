@@ -73,18 +73,17 @@ export class PlayerStore {
 
   @computed
   get currentPlaylist() {
-    return (
-      this.playlists.find(playlist => playlist.id === this.currentPlaylistId) ||
-      ({} as PlaylistModel)
+    return this.playlists.find(
+      playlist => playlist.id === this.currentPlaylistId
     );
   }
 
   @computed
   get currentSong() {
-    const currentSong = this.currentPlaylist.songs.find(
-      song => song.id === this.currentSongId
-    );
-    return currentSong || ({} as SongModel);
+    const currentSong =
+      this.currentPlaylist &&
+      this.currentPlaylist.songs.find(song => song.id === this.currentSongId);
+    return currentSong;
   }
   @action
   createPlaylist(name: string) {
@@ -99,7 +98,7 @@ export class PlayerStore {
 
   @action
   addSongToCurrentPlaylist(song: SongModel) {
-    this.currentPlaylist.songs.push(song);
+    if (this.currentPlaylist) this.currentPlaylist.songs.push(song);
   }
   @action
   setCurrentSong(songId: number) {
@@ -107,19 +106,21 @@ export class PlayerStore {
   }
   @action
   setNextSong() {
-    const currentPlaylistLenght = this.currentPlaylist.songs.length;
-    const currentSongIndex = this.currentPlaylist.songs.findIndex(
-      song => song.id === this.currentSongId
-    );
-    const playlistReachedEnd = currentSongIndex + 1 === currentPlaylistLenght;
+    if (this.currentPlaylist) {
+      const currentPlaylistLenght = this.currentPlaylist.songs.length;
+      const currentSongIndex = this.currentPlaylist.songs.findIndex(
+        song => song.id === this.currentSongId
+      );
+      const playlistReachedEnd = currentSongIndex + 1 === currentPlaylistLenght;
 
-    const nextSongId = playlistReachedEnd
-      ? this.currentPlaylist.songs[0].id
-      : this.currentPlaylist.songs[currentSongIndex + 1].id;
+      const nextSongId = playlistReachedEnd
+        ? this.currentPlaylist.songs[0].id
+        : this.currentPlaylist.songs[currentSongIndex + 1].id;
 
-    if (currentSongIndex > -1) {
-      // set first songId when last song played
-      this.currentSongId = nextSongId;
+      if (currentSongIndex > -1) {
+        // set first songId when last song played
+        this.currentSongId = nextSongId;
+      }
     }
   }
 }
