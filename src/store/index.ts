@@ -23,7 +23,8 @@ export interface PlaylistModel {
 export class PlayerStore {
   @observable currentSongId = 1;
   @observable currentPlaylistId = 1;
-  @observable modalHidden = true;
+  @observable createPlaylistModalHidden = true;
+  @observable addSongModalHidden = true;
   @observable playlists: PlaylistModel[] = [
     {
       id: 1,

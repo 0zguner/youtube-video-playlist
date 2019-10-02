@@ -7,6 +7,7 @@ import "../../components/playlist";
 import "../../components/player";
 import "../../components/modal";
 import "../../view/createPlaylist";
+import "../../view/addSong";
 
 @customElement("home-view")
 export class HomeView extends MobxLitElement {
@@ -33,7 +34,11 @@ export class HomeView extends MobxLitElement {
           : ""}"
       ></video-player>
 
-      <modal-container ?hidden="${this.store.modalHidden}">
+      <modal-container ?hidden="${this.store.addSongModalHidden}">
+        <!-- <create-playlist /> -->
+        <add-song />
+      </modal-container>
+      <modal-container ?hidden="${this.store.createPlaylistModalHidden}">
         <create-playlist />
       </modal-container>
     `;

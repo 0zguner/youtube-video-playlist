@@ -49,15 +49,19 @@ export class Playlist extends MobxLitElement {
           )}
       </div>
       <div class="controls">
-        <custom-button @click=${this.clickHandler}
+        <custom-button @click=${this.openCreatePlaylistModal}
           >Create Playlist</custom-button
         >
         <playlist-select></playlist-select>
-        <custom-button @click=${this.clickHandler}>Add Song</custom-button>
+        <custom-button @click=${this.openAddSongtModal}>Add Song</custom-button>
       </div>
     `;
   }
-  private clickHandler() {
-    this.store.modalHidden = !this.store.modalHidden;
+  private openCreatePlaylistModal() {
+    this.store.createPlaylistModalHidden = !this.store
+      .createPlaylistModalHidden;
+  }
+  private openAddSongtModal() {
+    this.store.addSongModalHidden = !this.store.addSongModalHidden;
   }
 }

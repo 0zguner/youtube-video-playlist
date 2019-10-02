@@ -32,7 +32,7 @@ export class CreatePlaylist extends LitElement {
 
   private save() {
     this.store.createPlaylist(this.inputValue);
-    this.store.modalHidden = true;
+    this.store.createPlaylistModalHidden = true;
   }
 
   private onChange(event: any) {

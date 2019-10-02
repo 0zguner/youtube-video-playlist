@@ -23,7 +23,6 @@ export class PlaylistSelect extends MobxLitElement {
         cursor: pointer;
         opacity: 1;
         transition: all 0.3s ease 0s;
-        width: 110px;
         text-align-last: center;
       }
       select::-ms-expand {
