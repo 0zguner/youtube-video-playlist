@@ -11,19 +11,21 @@ export class CreatePlaylist extends LitElement {
       :host {
         display: flex;
         flex-direction: row;
+        justify-content: center;
         height: 50px;
         background-color: black;
-      }
-      input {
-        background-color: gray;
+        border: 1px solid whitesmoke;
       }
     `;
   }
 
   render() {
-    // const { createPlaylist } = this.store;
     return html`
-      <input id="name" @input="${this.onChange}" />
+      <input
+        placeholder="Playlist name"
+        id="playlist-name"
+        @input="${this.onChange}"
+      />
       <custom-button @click="${this.save}">Save</custom-button>
     `;
   }

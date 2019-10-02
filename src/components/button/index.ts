@@ -8,6 +8,7 @@ export class CustomButton extends LitElement {
         background-color: #4caf50; /* Green */
         border: none;
         color: white;
+        height: 50px;
         padding: 15px 10px;
         text-align: center;
         text-decoration: none;
