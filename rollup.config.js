@@ -12,7 +12,7 @@ const plugins = [
   resolve({
     browser: true
   }),
-  copy([{ files: "src/*.{html,css}", dest: "dist" }], {
+  copy([{ files: "public/*.{html,css}", dest: "dist" }], {
     verbose: true
   }),
   commonjs(),
@@ -28,9 +28,9 @@ if (isProd) {
         // Launch in browser (default: false)
         open: true,
         // Show server address in console (default: true)
-        verbose: false,
+        verbose: true,
         // Multiple folders to serve from
-        contentBase: ["dist"],
+        contentBase: ["dist", "public"],
 
         // Options used in setting up server
         host: "localhost",
