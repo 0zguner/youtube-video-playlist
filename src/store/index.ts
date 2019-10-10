@@ -1,5 +1,5 @@
 import { observable, action, computed } from "mobx";
-import { idGenerator } from "../utils";
+import { idGenerator, youtube_url_parser } from "../utils";
 
 export interface SongModel {
   id: string;
@@ -99,10 +99,18 @@ export class PlayerStore {
 
   @action
   addSongToCurrentPlaylist(song: SongModel) {
+    const id = idGenerator();
+    const video_id = youtube_url_parser(song.url);
+    if (video_id === "") {
+      return false;
+    }
     if (song.title === "" || song.artist === "" || song.url === "") {
-      alert("invalid form");
+      return false;
     } else {
+      song.id = id;
+      song.video_id = video_id;
       this.currentPlaylist.songs.push(song);
+      return true;
     }
   }
   @action

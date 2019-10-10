@@ -1,6 +1,5 @@
 import { html, customElement, css, LitElement } from "lit-element";
 import PlayerStore from "../../store";
-import { idGenerator, youtube_url_parser } from "../../utils";
 
 @customElement("add-song")
 export class AddSong extends LitElement {
@@ -44,14 +43,12 @@ export class AddSong extends LitElement {
   }
 
   private save() {
-    const id = idGenerator();
-    const video_id = youtube_url_parser(this.url);
     this.store.addSongToCurrentPlaylist({
-      id: id,
+      id: "",
       title: this.songTitle,
       artist: this.artist,
       url: this.url,
-      video_id: video_id
+      video_id: ""
     });
     this.store.addSongModalHidden = true;
   }
