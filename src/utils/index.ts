@@ -1,10 +1,16 @@
 export const youtube_url_parser = (url: string) => {
-  var video_id = url.split("v=")[1];
-  var ampersandPosition = video_id.indexOf("&");
-  console.log(video_id);
-  if (ampersandPosition != -1) {
-    video_id = video_id.substring(0, ampersandPosition);
+  var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
+  var match = url.match(regExp);
+  return match && match[7].length == 11 ? match[7] : "";
+};
 
-    return video_id;
+export const idGenerator = () => {
+  let result = "";
+  const chars =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  const charsLength = chars.length;
+  for (var i = 0; i < 10; i++) {
+    result += chars.charAt(Math.floor(Math.random() * charsLength));
   }
+  return result;
 };
