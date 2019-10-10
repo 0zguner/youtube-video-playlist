@@ -12,6 +12,7 @@ export class PlaylistItem extends LitElement {
         display: flex;
         flex-direction: row;
         cursor: pointer;
+        font-size: 13px;
       }
     `;
   }

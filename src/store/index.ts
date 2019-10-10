@@ -99,7 +99,11 @@ export class PlayerStore {
 
   @action
   addSongToCurrentPlaylist(song: SongModel) {
-    this.currentPlaylist.songs.push(song);
+    if (song.title === "" || song.artist === "" || song.url === "") {
+      alert("invalid form");
+    } else {
+      this.currentPlaylist.songs.push(song);
+    }
   }
   @action
   setCurrentSong(songId: string) {

@@ -11,14 +11,14 @@ export class Playlist extends MobxLitElement {
   static get styles() {
     return css`
       :host {
-        display: flex;
         flex: 1;
+        display: flex;
         flex-direction: column;
-        justify-content: space-between;
         height: 100%;
         border-right-color: whitesmoke;
         border-right-style: solid;
         border-right-width: 1px;
+        padding-left: 20px;
       }
       .playlist {
         display: flex;
@@ -29,7 +29,7 @@ export class Playlist extends MobxLitElement {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        padding: 10px;
+        padding: 20px;
       }
     `;
   }
